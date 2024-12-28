@@ -19,19 +19,19 @@ Explanation: The subarray yielding the maximum sum is [1, 2, 7, -4, 3, 2].
 
 long long maxSubarraySum(vector<int> arr, int n)
 {
-    //Better Approach
-    // int m=INT_MIN;
+    Better Approach
+    int m=INT_MIN;
     
-    // for(int i=0;i<n;i++){
-    // int sum=0;
-    //     for(int j=i;j<n;j++){
-    //        sum+=arr[j];
-    //     m=max(sum,m);
-    //     }
-    // }
-    // if(m>0)
-    // return m;
-    // return 0;
+    for(int i=0;i<n;i++){
+    int sum=0;
+        for(int j=i;j<n;j++){
+           sum+=arr[j];
+        m=max(sum,m);
+        }
+    }
+    if(m>0)
+    return m;
+    return 0;
 
 
 //Optimised -KADANE ALGO

@@ -12,17 +12,17 @@
 int maximumProfit(vector<int> &prices){
     // Brute force
 int n=prices.size();
-    // int maxx=INT_MIN;
-    // for(int i=0;i<n;i++){
-    //     int buy=prices[i];
-    //     for(int j=i+1;j<n;j++){
-    //         int sell=prices[j];
-    //         maxx=max(maxx,sell-buy);
-    //     }
-    // }
-    // if(maxx<0)
-    // return 0;
-    // return maxx;
+    int maxx=INT_MIN;
+    for(int i=0;i<n;i++){
+        int buy=prices[i];
+        for(int j=i+1;j<n;j++){
+            int sell=prices[j];
+            maxx=max(maxx,sell-buy);
+        }
+    }
+    if(maxx<0)
+    return 0;
+    return maxx;
 
     //Optimal Approach
 

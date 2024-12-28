@@ -15,14 +15,11 @@ Hence ‘1’ is the majority element.
 //Brute force 
 //TC-O(n^2);
 
-/*
 int majorityElement(vector<int> v) {
-	// Write your code here
+
 	int n=v.size();
 	// sort(v.begin(),v.end());
 	for(int i=0;i<n;i++){
-	int freq=0;
-		for(int j=0;j<n;j++){
 			if(v[i]==v[j]){
 				freq++;
 			}
@@ -32,8 +29,10 @@ int majorityElement(vector<int> v) {
 		}		
 	}
 return -1;
-}
-*/
+}int freq=0;
+		for(int j=0;j<n;j++){
+	
+
 
 
 //better Approach
@@ -41,18 +40,18 @@ return -1;
 
 // using hashing
 
-// int n=v.size();
-// map<int,int>hash;
-// for(int i=0;i<n;i++){
-// 	hash[v[i]]++;
-// }
-// for( auto &[key,value]:hash){
-// 	if(value>n/2){
-// 		return key;
-// 	}
-// }
+int n=v.size();
+map<int,int>hash;
+for(int i=0;i<n;i++){
+	hash[v[i]]++;
+}
+for( auto &[key,value]:hash){
+	if(value>n/2){
+		return key;
+	}
+}
 
-// return -1;
+return -1;
 
 
 
