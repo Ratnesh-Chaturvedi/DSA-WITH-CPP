@@ -16,7 +16,6 @@ Hence ‘1’ is the majority element.
 //TC-O(n^2);
 
 int majorityElement(vector<int> v) {
-
 	int n=v.size();
 	// sort(v.begin(),v.end());
 	for(int i=0;i<n;i++){
@@ -29,8 +28,7 @@ int majorityElement(vector<int> v) {
 		}		
 	}
 return -1;
-}int freq=0;
-		for(int j=0;j<n;j++){
+
 	
 
 
