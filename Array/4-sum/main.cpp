@@ -25,8 +25,6 @@ vector<vector<int>> fourSum(vector<int>& a, int target) {
     int n=a.size();
 
 //Brute force is by using 4 loops
-
-
     //Better Approach by using hashing
 set<vector<int>>st;
     for(int i=0;i<n;i++){
