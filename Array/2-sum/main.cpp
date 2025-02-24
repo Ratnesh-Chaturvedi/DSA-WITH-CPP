@@ -7,7 +7,7 @@ string read(int n, vector<int> book, int target)
         for(int j=i+1;j<n;j++){
             if(book[i]+book[j]==target){
                 return "YES";
-             return {i,j} if we want index            
+            //  return {i,j} if we want index            
             }
         }
     }
