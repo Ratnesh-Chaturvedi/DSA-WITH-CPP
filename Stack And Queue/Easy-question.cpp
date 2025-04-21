@@ -113,3 +113,98 @@ class MyQueue {
           return true;      
             }
         };
+
+
+
+// 20. Valid Parentheses
+        bool isValid(string s) {
+          stack<char>st;
+          for(int i=0;i<s.size();i++){
+        if(s[i]=='(' || s[i]=='{' || s[i]=='['){
+          st.push(s[i]);
+        }
+        else {
+          if(st.empty()) return false;
+          char ch=st.top();
+          st.pop();
+          if((s[i]==')' && ch=='('  ) || (s[i]=='}' && ch=='{' )  || (s[i]==']' && ch=='[' )) continue;
+          else return false;
+        }
+          }
+        if(st.empty()) return true;
+        return false;
+      }      
+
+
+
+      // 155. Min Stack
+//TC-O(1) SC-O(2*n)
+      class MinStack {
+        public:
+        stack<pair<int,int>>st;
+            MinStack() {   
+            }
+            void push(int val) {
+                if(st.empty()){
+                    int mini=val;
+                    st.push({val,mini});
+                }
+                else {
+                    int mini=st.top().second;
+                     mini=min(mini,val);
+                    st.push({val,mini});   }
+            }
+            void pop() {
+                st.pop();
+            }
+            int top() {
+                if(st.empty()) return -1;
+                return st.top().first;
+            }
+            int getMin() {
+                return st.top().second;
+            }
+        };
+
+        //space Optimised
+        class MinStack {
+          public:
+          stack<long long >st;
+          long long  mini=INT_MAX;
+              MinStack() {
+                  
+              }
+              
+              void push(int val) {
+                  long long value=(long long)val;
+                  if(st.empty()){
+                      mini=value;
+                      st.push(value);
+                  }
+                  else {
+                      if(val>mini) st.push(val);
+                      else {
+                          st.push(2ll*val - mini);
+                          mini=val;
+                      }
+                  }
+              }
+              
+              void pop() {
+                 if(st.empty()) return;
+                 long long x=st.top();
+                 st.pop();
+                 if(x < mini) mini=2*mini-x;
+              }
+              
+              int top() {
+                 if(st.empty()) return-1;
+                 long long x=st.top();
+                 if(mini<x) return x;
+                 return mini;
+                 }
+              
+              int getMin() {
+                 return mini;
+              }
+          };
