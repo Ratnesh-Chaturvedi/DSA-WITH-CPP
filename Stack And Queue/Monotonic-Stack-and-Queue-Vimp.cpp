@@ -318,3 +318,104 @@ int trap(vector<int>& height) {
                 }
                 return st;
             }
+
+            // 84. Largest Rectangle in Histogram
+            // Brute Force
+            //we use next and previous smaller indexes 
+            int largestRectangleArea(vector<int>& heights) {
+                int n=heights.size();
+             if(n==1) return heights[0];
+             vector<int>Nse=findNse(heights);
+             vector<int>Pse=findPsee(heights);
+             int maxi=0;
+             for(int i=0;i<n;i++){
+                int area=heights[i]*(Nse[i]-Pse[i]-1);
+                maxi=max(area,maxi);
+             }
+             return maxi;
+            }
+
+            //optimal
+            int largestRectangleArea(vector<int>& arr) {
+                int n=arr.size();
+                int maxArea=0;
+                stack<int>st; // it stores the indexes
+                for(int i=0;i<n;i++){
+              while(!st.empty() && arr[st.top()]>arr[i] ){
+               int elem=st.top();
+               st.pop();
+               int nse=i;
+               int pse=st.empty()?-1:st.top();
+               maxArea=max(maxArea,(arr[elem]*(nse-pse-1)));
+              }
+              st.push(i);
+                }
+                // if there is still some element left in the stack;
+                while(!st.empty()){
+                      int elem=st.top();
+               st.pop();
+               int nse=n;
+               int pse=st.empty()?-1:st.top();
+               maxArea=max(maxArea,(arr[elem]*(nse-pse-1)));
+                }
+                return maxArea;
+            }
+
+
+            // 85. Maximal Rectangle
+            int maximalRectangle(vector<vector<char>>& matrix) {
+                int n=matrix.size();
+                int m=matrix[0].size();
+                vector<vector<int>>prefixSum(n,vector<int>(m));
+            //calculating prefix sum
+            for(int j=0;j<m;j++){
+                int sum=0;
+                for(int i=0;i<n;i++){
+                    sum+=matrix[i][j]-'0';
+                    if(matrix[i][j]=='0') sum=0;
+                    prefixSum[i][j]=sum;
+                }
+            }
+            int maxA=0;
+            for(int i=0;i<n;i++){
+           maxA=max(maxA,largestRectangleArea(prefixSum[i]));
+            }
+            return maxA;
+            }
+            // for space optimise- we can optimsed the prefix sum ->because we just need each row wise prefix sum so that we can compute this under 2 loops where we also put the maxArea and call the largestRectangle area;
+            
+            
+            //402. Remove K Digits
+            string removeKdigits(string num, int k) {
+                int n=num.size();
+                if(k==n) return "0";
+                stack<char>st;
+                for(int i=0;i<n;i++){
+                    while(!st.empty() && k && st.top() > num[i] ){
+                        k--;
+                        st.pop();
+                    }
+                    st.push(num[i]);
+                }
+                while(k){
+                    st.pop();
+                    k--;
+                }
+                if(st.empty()) return "0";
+                 string res="";
+                 while(!st.empty()){
+                    res.push_back(st.top());
+                    st.pop();
+                 }
+                 while(res.size() && res.back()=='0'){
+                    res.pop_back();
+                 }
+                 reverse(res.begin(),res.end());
+                 if(res.size()==0) return "0";
+                 return res;
+        
+            }
+
+
+            
+                    
