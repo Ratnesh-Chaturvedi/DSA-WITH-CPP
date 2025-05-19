@@ -51,12 +51,7 @@ void printSubSet(int idx,int n,vector<int>&nums,vector<vector<int>>&ans,vector<i
        }
 
 
-
-
-
        // print all the subsequence which has the sum==k
-
-
 void printSum(int idx,vector<int>ans,int s,int sum,int n,vector<int>&vec ){
     if(idx==n){
         if(s==sum){
@@ -103,7 +98,6 @@ return false;
 int printCnt(int idx,int s,int sum,int n,vector<int>&vec){
 if(idx==n){
     if(s==sum){
-       
         return 1;
     }
     return 0;
@@ -111,7 +105,6 @@ if(idx==n){
 s+=vec[idx];
 int left=printCnt(idx+1,s,sum,n,vec);
 s-=vec[idx];
-
 int right=printCnt(idx+1,s,sum,n,vec);
     return left+right;
 }
@@ -125,8 +118,9 @@ int main(){
      cout<<printCnt(0,0,sum,n,vec);
 }
 
-// Subset Sums
 
+
+// Subset Sums
 void subset(int idx,int s,vector<int>&arr,vector<int>&ans){
     if(idx==arr.size()){
         ans.push_back(s);
@@ -170,35 +164,27 @@ void subset(int idx,int s,vector<int>&arr,vector<int>&ans){
 
     // optimised Code
     void subset(int idx,vector<int>&nums,vector<vector<int>>&ans,vector<int>&curr){
-
         ans.push_back(curr);
-         
       for(int i=idx;i<nums.size();i++){
           if(i!=idx && nums[i]==nums[i-1]) continue;
           curr.push_back(nums[i]);
           subset(i+1,nums,ans,curr);
           curr.pop_back();
       }
-      
         }
-  
       vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         vector<vector<int>>ans;
         sort(nums.begin(),nums.end());
         vector<int>curr;
-        subset(0,nums,ans,curr);
-        
+        subset(0,nums,ans,curr);   
         return ans;
       }
 
       
 
-
-
-
-    //   46. Permutations - Print all the permutaions of string or Array
-    // Appraoch 1 - by using extra space
-      void recPermutation(vector<int>&curr,vector<int>& nums ,vector<vector<int>>&ans,vector<int>&freq){
+ //   46. Permutations - Print all the permutaions of string or Array
+// Appraoch 1 - by using extra space
+    void recPermutation(vector<int>&curr,vector<int>& nums ,vector<vector<int>>&ans,vector<int>&freq){
     if(curr.size()==nums.size()){
         ans.push_back(curr);
         return;
@@ -230,12 +216,10 @@ void subset(int idx,int s,vector<int>&arr,vector<int>&ans){
         }
         for(int i=idx;i<nums.size();i++){
             swap(nums[idx],nums[i]);
-                recPermutation(idx+1,nums,ans);
+            recPermutation(idx+1,nums,ans);
             swap(nums[idx],nums[i]);
             }
         }
-
-
 
 
 
@@ -331,9 +315,7 @@ bool isSafe(int row,int col,vector<string>board,int n){
 
 
 
-         //37. Sudoku Solver
-
-         
+         //37. Sudoku Solver      
 bool solve(vector<vector<char>>&board){
     for(int i=0;i<board.size();i++){
         for(int j=0;j<board[0].size();j++){
@@ -360,7 +342,6 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
         if(board[i][col]==c) return false;
         //checking the column wise (horizontal)
         if(board[row][i]==c) return false;
-
         // checking the sub matrix of size 3x3
         if(board[3*(row/3)+i/3][3*(col/3)+i%3]==c) return false;
     }
@@ -370,9 +351,6 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
     void solveSudoku(vector<vector<char>>& board) {
         solve(board);
     }
-
-
-
 
 
     // 131. Palindrome Partitioning
@@ -409,14 +387,11 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
 
     // Rat in a Maze Problem - I
     // Approach 1  - by using individual moves;
-
-
     void solve(int i,int j,vector<vector<int>>&mat,int n,vector<string>&ans,string s,vector<vector<int>>&visited){
         if(i==n-1 && j==n-1){
             ans.push_back(s);
             return;
         }
-        
         // downward
         if(i+1<n && !visited[i+1][j] &&  mat[i+1][j]==1){
             visited[i][j]=1;
@@ -427,10 +402,8 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
         if(j-1>=0 && !visited[i][j-1] && mat[i][j-1]==1){
             visited[i][j]=1;
             solve(i,j-1,mat,n,ans,s+'L',visited);
-            visited[i][j]=0;
-            
+            visited[i][j]=0;   
         }
-        
         //right
         if(j+1<n && !visited[i][j+1] && mat[i][j+1]==1){
               visited[i][j]=1;
@@ -453,7 +426,6 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
       }
 
 
-
       //approach 2 - with using single loop for moves
       void solve(int i,int j,vector<vector<int>>&mat,int n,vector<string>&ans,string s,vector<vector<int>>&visited ,int di[],int dj[]){
         if(i==n-1 && j==n-1){
@@ -470,8 +442,7 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
               visited[i][j]=0;
   
   }
-  }
-  
+  }  
     }
       vector<string> findPath(vector<vector<int>> &mat) {
         vector<string>ans;
@@ -484,7 +455,7 @@ bool isValid(vector<vector<char>>&board,int row,int col,char c){
       }
 
 
-
+      
       //60. Permutation Sequence
     //   Brute force
     void recPermutation(int idx,string &str ,vector<string>&ans){
