@@ -64,7 +64,6 @@ for(int i=0;i<n;i++){
 		ans.back()[1]=max(ans.back()[1],arr[i][1]);
 	}
 }
-
 	return ans;
 	
 }
