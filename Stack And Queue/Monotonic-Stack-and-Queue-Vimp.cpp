@@ -59,7 +59,6 @@ vector<int> nextGreaterElements(vector<int>& nums) {
       if(i<n){
         ans[idx]=st.empty()?-1:st.top();
       }
-
       st.push(nums[idx]);
    }
    return ans;
