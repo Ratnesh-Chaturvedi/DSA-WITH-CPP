@@ -101,7 +101,7 @@ vector<int>iterativePreorder(Node*root){
     }
     return traversed;
 }
-// iterative InOrder Traversal
+// iterative InOrder Traversal 
  vector<int>iterativeInorder(Node*root){
     Node*node=root;
     vector<int>traversed;
@@ -135,7 +135,7 @@ vector<int>iterativePostorderByStacks(Node*root){
     root=st1.top();
     st1.pop();
     st2.push(root); // do this when u are using 2 stacks
-    //  ans.push_back(root->data);   // do this operation when u are using one stack  
+    //  ans.push_back(root->data);   // do this operation when u are using  arr instead of stack  
     if(root->left!=NULL) st1.push(root->left);
     if(root->right!=NULL)
     st1.push(root->right);
@@ -148,9 +148,38 @@ while(!st2.empty()){
 }
 
 
-// reverse(ans.begin(),ans.end()); // do this when u are using one stack
+// reverse(ans.begin(),ans.end()); // do this when u are using 1 stack and 1 arr
 return ans;
 
+}
+
+// using one stack
+vector<int> postOrderTraversal(Node* root) {
+    vector<int> result;
+    if (!root) return result;
+
+    stack<Node*> st;
+    Node* current = root;
+    Node* lastVisited = nullptr;
+
+    while (!st.empty() || current) {
+        if (current) {
+            st.push(current);
+            current = current->left;
+        } else {
+            Node* peekNode = st.top();
+            // if right child exists and traversing node from left child, move right
+            if (peekNode->right && lastVisited != peekNode->right) {
+                current = peekNode->right;
+            } else {
+                result.push_back(peekNode->val);
+                lastVisited = peekNode;
+                st.pop();
+            }
+        }
+    }
+
+    return result;
 }
 
 
