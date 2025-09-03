@@ -62,8 +62,7 @@ return ans;
 
 
     //  Ceil The Floor
-
-    Problem statement
+ Problem statement
 You're given a sorted array 'a' of 'n' integers and an integer 'x'.
 Find the floor and ceiling of 'x' in 'a[0..n-1]'.
 Note:

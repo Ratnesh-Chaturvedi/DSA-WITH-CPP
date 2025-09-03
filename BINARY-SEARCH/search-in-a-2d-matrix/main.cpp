@@ -28,8 +28,6 @@ bool BS(vector<int>arr,int target){
 
 bool searchMatrix(vector<vector<int>>& mat, int target) {
        // brute force is just by traversing all the element
-
-
        int n=mat.size();
        int m=mat[0].size();
 

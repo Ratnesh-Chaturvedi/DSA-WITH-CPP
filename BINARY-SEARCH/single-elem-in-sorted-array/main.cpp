@@ -20,9 +20,7 @@ for(int i=0;i<n;i++){
 	ans=ans^arr[i];
 }
 return ans;
-
 // brute force
-
 if(n==1 ) return arr[0];
 
 for(int i=0;i<n;i++){

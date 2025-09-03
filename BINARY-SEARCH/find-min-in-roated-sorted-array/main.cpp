@@ -28,7 +28,6 @@ The original array was [5, 10, 15, 20, 25, 30] and it was rotated 2 times.
 Expected Time Complexity:
 Try to solve this with O(log(n)) time complexity.
 
-
 Constraints :
 1 <= n <= 10^5
 1 <= arr[i] <= 10^9

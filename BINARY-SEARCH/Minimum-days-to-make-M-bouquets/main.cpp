@@ -35,8 +35,6 @@ Time limit: 1 sec
 
 
 #include <bits/stdc++.h>
-
-
 bool PossibleDay(vector<int> &arr,int day, int k, int m){
 	int cnt=0,noOfBouquet=0;
 	for(int i=0;i<arr.size();i++){

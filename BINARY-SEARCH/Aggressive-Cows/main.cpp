@@ -29,10 +29,7 @@ Constraints :
 2 <= 'k' <= n
 0 <= 'arr[i]' <= 10 ^ 9
 Time Limit: 1 sec.
-
 #include <bits/stdc++.h>
-
-
 bool canWePlaceCow(vector<int> &stalls ,int distance, int cows){
     int cntCow=1;
     int n=stalls.size();

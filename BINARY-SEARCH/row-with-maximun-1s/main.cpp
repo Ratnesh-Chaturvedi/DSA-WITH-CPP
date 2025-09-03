@@ -33,7 +33,6 @@ Explanation of the Sample Input 2:
 Both rows have the same number of ones. Therefore, we will pick the row with smaller index.
 
 #include <bits/stdc++.h>
-
 int rowWithMax1s(vector<vector<int>> &matrix, int n, int m) {
     //MY Code
 //     int ans=-1;

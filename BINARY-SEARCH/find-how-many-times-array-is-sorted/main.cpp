@@ -10,6 +10,7 @@ Output: 3
 Explanation:
 If we rotate the array [1 ,2, 3, 4, 5] right '3' times then we will get the 'arr'. Thus 'r' = 3.
 
+
 #include <bits/stdc++.h>
 int findKRotation(vector<int> &arr) {
   int n = arr.size();

@@ -55,6 +55,4 @@ while(row < n && col > -1){
    
 }
 return false;
-
-
 }

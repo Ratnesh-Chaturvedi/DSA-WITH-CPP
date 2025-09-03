@@ -54,7 +54,6 @@ int Maxidx(vector<vector<int>>&mat,int n,int m,int col){
     }
     return idx;
 }
-
 vector<int> findPeakGrid(vector<vector<int>> &mat){
     int n=mat.size();
     int m=mat[0].size();

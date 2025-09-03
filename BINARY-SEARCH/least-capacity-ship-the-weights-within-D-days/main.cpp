@@ -38,15 +38,13 @@ Explanation:
 4th day: 1, 1
  
 
+
 Constraints:
 
 1 <= days <= weights.length <= 5 * 104
 1 <= weights[i] <= 500
 
 #include <bits/stdc++.h>
-
-
-
 int days(vector<int> &weights, int capacity){
     int n=weights.size();
     int day=1;

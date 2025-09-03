@@ -17,8 +17,6 @@
 // 4th Root of 69 is not an integer, hence -1.
 
 
-
-
 #include <bits/stdc++.h>
 
 // return 1 if ans==m;

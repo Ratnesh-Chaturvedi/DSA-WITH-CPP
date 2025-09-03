@@ -53,7 +53,6 @@ int smallerThanCurrent(vector<vector<int>> &matrix,int x){
     }
     return sum;
 }
-
 int median(vector<vector<int>> &matrix, int m, int n) {
    //brute force
 //    vector<int>ans;

@@ -18,6 +18,8 @@ Sample output 1:
 Explanation of Sample output 1:
 For this testcase the first occurrence of 2 in at index 4 and last occurrence is at index 7.
 
+
+
 #include <bits/stdc++.h>
 
 int upperbound(vector<int> &arr, int n, int k) {

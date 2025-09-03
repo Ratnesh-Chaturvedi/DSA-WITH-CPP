@@ -19,7 +19,6 @@ Find the Smallest Divisor Given a Threshold
 // Input: nums = [44,22,33,11,1], threshold = 5
 // Output: 44
  
-
 // Constraints:
 
 // 1 <= nums.length <= 5 * 104

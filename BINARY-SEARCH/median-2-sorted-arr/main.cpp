@@ -49,7 +49,6 @@ vector<int>merge(vector<int>& nums1, vector<int>& nums2){
     }
 };
 
-
 // better  SC-O(1)
 double median(vector<int>& a, vector<int>& b) {
 	//better apporoach

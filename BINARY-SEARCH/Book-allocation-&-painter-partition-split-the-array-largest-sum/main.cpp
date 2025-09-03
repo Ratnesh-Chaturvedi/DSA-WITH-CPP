@@ -48,7 +48,6 @@ int findPages(vector<int>& arr, int n, int m) {
     int low=*max_element(arr.begin(),arr.end());
     //assign that if one student will be there he will get all the books
     int high=accumulate(arr.begin(),arr.end(),0);
-
     // brute force
     // for(int pages=low;pages<high;pages++){
     //     if(allocatepages(arr,pages)==m) return pages;

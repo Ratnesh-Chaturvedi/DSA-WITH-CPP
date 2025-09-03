@@ -8,7 +8,6 @@
 // Input: a = [6, 10, 1, 3, 5], key = 3
 // Output: True
 
-
 bool searchInARotatedSortedArrayII(vector<int>&A, int key) {
    int n=A.size();
    int low=0;

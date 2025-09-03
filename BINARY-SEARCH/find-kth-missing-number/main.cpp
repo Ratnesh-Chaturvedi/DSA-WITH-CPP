@@ -37,7 +37,6 @@ Time Limit : 1 sec
 
 
 int missingK(vector < int > vec, int n, int k) {
-
 // Brute Force
 
 // for(int i=0;i<n;i++){
