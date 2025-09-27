@@ -13,10 +13,10 @@ class DisjointSet{
             parent[i]=i;
         }
     }
-    // finding ultimate parent 
+    // finding ultimate parent  -> a type of path compression move
     int findUParent(int node){
         if(node==parent[node] ) return node;
-        return parent[node]=findUParent(parent[node]);
+        return parent[node]=findUParent(parent[node]); //a type of path compression move
     }
 
     // Union by rank
