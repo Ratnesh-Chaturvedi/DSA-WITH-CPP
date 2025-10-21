@@ -6,7 +6,6 @@
            }
            
        }
-       
        st.push(node);  // push the node when all calls are ended
    }
   
