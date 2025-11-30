@@ -13,7 +13,7 @@ vector<int>shortestPath(vector<vector<int>>edges,int V ,int S){
         }
 // creating a priority queue // it stores {distance,node } 
 // we are building the minHeap
-priority_queue<pair<int,int>>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
 // creating a  distance array to store the distance from each node
 vector<int>distance(V,INT_MAX) ; 
 distance[S]=0; // because Source to Source the distance travelled is 0
