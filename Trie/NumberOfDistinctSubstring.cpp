@@ -1,0 +1,99 @@
+Problem statement
+Ninja has been given a string ‘WORD’ containing lowercase English alphabets having length ‘N’. Ninja wants to calculate the number of distinct substrings in the ‘WORD’.
+
+For Example :
+
+For ‘WORD’ = “abcd” and ‘N’ = 4 following are the 10 distinct substrings of ‘WORD’.
+“abcd”, “abc”, “ab”, “a”, “bcd”, “bc”, “b”, “cd”, “c”, and “d”
+Can you help the Ninja to find out the number of distinct substrings in the ‘WORD’?
+
+Note :
+
+If you are going to use variables with dynamic memory allocation then you need to release the memory associated with them at the end of your solution.
+Detailed explanation ( Input/output format, Notes, Images )
+Constraints :
+1 <= T <= 100
+1 <= N <= 10 ^ 3
+‘a’ <= WORD[i] <= ‘z’
+
+Where ‘WORD[i]’ denotes the element at position ‘i’ in 'WORD'.
+
+Time Limit: 1 sec
+Sample Input 1 :
+2
+3
+aaa
+4
+abab
+Sample Output 1 :
+3
+7
+Explanation For Sample Output 1 :
+For the first test case :
+Following are distinct substrings of the given string ‘WORD’.
+“aaa”
+“aa”   
+“a”
+
+For the second test case :
+Following are distinct substrings of the given string ‘WORD’.
+“abab”
+“aba” 
+“ab”
+“a”
+“bab”
+“ba”
+“b”
+Sample Input 2 :
+2
+1
+z
+3
+abc    
+Sample Output 2 :
+1
+6
+Explanation For Sample Output 2:
+For the first test case:
+There is only one possible substring of the given string ‘WORD’ which is also distinct so the answer will be 1.
+
+For the second test case :
+Following are distinct substrings of the given string ‘WORD’.
+“abc”
+“ab”
+“a”
+“bc”
+“b”
+“c”
+
+
+#include <bits/stdc++.h> 
+class Node{
+    public:
+    Node*links[26];
+
+    bool containKey(char c){
+        return links[c-'a']!=nullptr;
+    }
+    void put(char ch,Node*node){
+        links[ch-'a']=node;
+    }
+    Node*get(char c){
+        return links[c-'a'];
+    }
+};
+int distinctSubstring(string &word) {
+  Node*root=new Node();
+  int cnt=0;
+  for(int i=0;i<word.size();i++){
+      Node*node=root;
+      for(int j=i;j<word.size();j++){
+          if(!node->containKey(word[j])){
+              cnt++;
+              node->put(word[j],new Node());
+          }
+          node=node->get(word[j]);
+      }
+  } 
+  return cnt;
+}
