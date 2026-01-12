@@ -33,10 +33,3 @@ bool path(Node*root,vector<int>&temp,int node){
   return ans;
     }
 
-
-
- 
-
-
-   
-
