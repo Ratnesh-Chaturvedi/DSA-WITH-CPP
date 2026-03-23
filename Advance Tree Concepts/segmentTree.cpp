@@ -220,3 +220,140 @@ void updateQuery(int st,int end,int val,int i,int l,int r,vector<int>&segTree,ve
     segTree[i]=segTree[2*i+1]+segTree[2*i+2];
 
 }
+
+
+
+//RANGE MAXIMUM/MINIMUM INDEX QUERY
+//this time we store the index in the segment tree
+ vector<int>sgTree(4*n)
+ // build the tree but this time check for max idx
+ void build(int i,int l,int r,vector<int>&stree,vector<int>&arr){
+    if(l==r){
+        // stree[i]=arr[l]; // we do this in build while we select for max element 
+        stree[i]=l;
+        return;
+    }
+    int mid=l+(r-l)/2;
+    
+
+    // we do this to find the idx
+    build(2*i+1,l,mid,stree,arr);
+    build(2*i+2,mid+1,r,stree,arr);
+    int leftIdx=stree[2*i+1];
+    int rightIdx=stree[2*i+2];
+    
+    if(arr[leftIdx]>=arr[rightIdx]){
+        stree[i]=leftIdx;
+    }
+    else stree[i]=rightIdx;
+
+ }
+
+ // for range max idx query 
+ // do same like range max element query replace only the element with index
+// range-[st,end]
+
+//TC- O(log2n)
+//
+ int RMIQ(int i,int l,int r,int st,int end,vector<int>&stree,vector<int>&arr){
+    // out of bound 
+    if(l>end || r<st) return -1;
+
+    // in the range 
+    if(l>=st && r<=end) return stree[i];
+
+    // overlapping 
+    int mid=l+(r-l)/2;
+    int leftIdx=RMIQ(2*i+1,l,mid,st,end,stree,arr);
+    int rightIdx=RMIQ(2*i+1,mid+1,r,st,end,stree,arr);
+
+    // check for -1 case 
+    if(leftIdx==-1) return rightIdx;
+    if(rightIdx==-1) return leftIdx;
+
+        // check for max elment idx
+        if(arr[leftIdx]<=arr[rightIdx]){
+            return leftIdx;
+        }
+        return rightIdx;
+ }
+
+
+
+ // Using RMIQ with Binary Search
+ // Eg-arr->[5,3,7,4,1,6]
+ // Queries=> {[0,1],[0,2],[1,3]---}
+ 
+ // Varities of question 
+ // varity 1->
+ // Right range mai max element the idx 
+ // Eg-> [0,1] toh ismai jo right side ke range jo hogi (r+1->n-1) tak ki usmai max element the index nikalna hia  (RMIQ)
+ // so iska answer aayega -> index of 7 =2
+ 
+ // Varity 2->
+// Right range mai wo element nikalna hai jo  queried ->[i,j] such that >arr[i] && arr[j]
+// wo element us query ke done index ke element se bada ho  
+// RMIQ ek idx dega -> check arr[idx]>arr[i] && arr[idx]>arr[j] then this idx is a valid answer
+
+// Varity 3-> // Binary search used in this 
+// right range mai wo element jo query [i,j] ke liye >arr[i] && arr[j] which is also as left as possible 
+// eg -> q=>[0,1] -> so here elements=[7,6] are valid and return the index of the element which is the leftmost =arr[2]=7; idx=2 (ans)
+ 
+// agr ismai RMIQ laga toh sirf wo max element ka index dega ko hame pta nahi ki koi or lement bhi hai range mai condition ko follow karne wala or sayd wo left side ho max element ke index ke -> so wo sirf RMIQ se pta nahi lagaya ja sakte so is liye Binary Search lagayenge where we use (mid,left,right) and find RMIQ for (mid,left ) and if conditon RMIQ idx follows the condition then decrease the r and apply the concept of binary serach we apply as normal type 
+// like idx=RMIQ(l,mid)  // if this idx is valid then move right =mid-1 
+// same for right   
+
+// for variant 3 -> see question ->  
+//2940. Find Building Where Alice and Bob Can Meet
+
+ 
+
+// Mutable range min/max update query 
+// like ek range hai usmai min,and max likalo or update bhi kar do -> we use lazy propagation technique
+
+
+// it is simple as we do in lazy propagation 
+// build two tree min and max segTree for all ranges 
+
+// query ->[st,end]
+// we have 2 tree min  and max 
+
+// we also build a progate function to check for the lazy propagation 
+
+void propagate(int i, int l ,int r){
+    if(lazy[i]!=0){
+        segTreeMax[i]+=lazy[i];
+        segTreeMin[i]+=lazy[i];
+        // check that that tree has its child nodes or not
+        if(l!=r){
+            lazy[2*i+1]+=lazy[i];
+            lazy[2*i+2]+=lazy[i];
+        }
+        // reset the lazy value because it is progated successfully 
+        lazy[i]=0;
+    }
+}
+
+void rangeUpdate(int st,int end,int i,int l,int r){
+  propagate(i,l,r)    ; // check lazy[i]!=0
+
+  // out of bound
+  if(l>end || r<st ){
+    return;
+  }
+  // overlap
+  if(l>=st && r<=end){
+    lazy[i]+=val;
+    progate(i,l,r);
+    return ; // this is the lazy propagation so we only upate the node not its child so that it will take less time and when we reach that node than at that time we update that node values 
+  }
+
+  int mid=l+(r-l)/2;
+  rangeUpdate(st,end,2*i+1,l,mid);
+  rangeUpdate(st,end,2*i+2,mid+1,r);
+
+  // updating the min segtree 
+  segTreeMin[i]=min(segTreepMin[2*i+1],segTreeMin[2*i+2]);
+  segTreeMax[i]=max(segTreepMax[2*i+1],segTreeMax[2*i+2]);
+  
+}
