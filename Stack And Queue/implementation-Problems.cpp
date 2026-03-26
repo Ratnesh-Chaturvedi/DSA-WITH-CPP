@@ -66,6 +66,30 @@
                     //    }
                     //     return ans;
                 
+
+        //  better soltuion 
+        
+        map<pair<int,int>,int>hash;
+        int n=nums.size();
+        vector<int>ans(n-k+1);
+        for(int i=0;i<k;i++){
+            hash[{nums[i],i}]=1;
+        }
+        int index=0;
+        ans[index++]=hash.rbegin()->first.first;
+        for(int i=k;i<n;i++){
+            int last=i-k;
+            int el=nums[last];
+           hash.erase({el,last});
+            int newel=nums[i];
+            hash[{newel,i}]=1;
+            ans[index++]=hash.rbegin()->first.first; 
+        }
+       
+        return ans;
+    
+
+
                         // using deque;
                            deque<int>dq; // it stores the indexes
                            vector<int>ans;
@@ -103,6 +127,47 @@
                       return -1;
                       
                     }
+
+
+                    // using stack
+                    int n = mat.size();
+    stack<int> st;
+
+    // push everybody in stack
+    for (int i = 0; i < n; i++)
+        st.push(i);
+
+    // find a potential celebrity
+    while (st.size() > 1) {
+        int a = st.top();
+        st.pop();
+        int b = st.top();
+        st.pop();
+
+        // if a knows b -> a cannot be celebrity
+        if (mat[a][b] == 1) {
+            st.push(b);
+        } else {
+            // if a doesn't know b -> b cannot be celebrity
+            st.push(a);
+        }
+    }
+
+    int c = st.top();  // candidate
+    st.pop();
+
+    // verify candidate
+    for (int i = 0; i < n; i++) {
+        if (i == c) continue;
+        // if candidate knows anyone
+        // or anyone doesn't know candidate
+        if (mat[c][i] == 1 || mat[i][c] == 0)
+            return -1;
+    }
+
+    return c;
+
+    
 // optimised;
 int celebrity(vector<vector<int> >& mat) {
     int n=mat.size();

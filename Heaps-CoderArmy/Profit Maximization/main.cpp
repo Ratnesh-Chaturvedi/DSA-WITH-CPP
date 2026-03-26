@@ -1,35 +1,21 @@
  Given an array A , representing seats in each row of a stadium. You need to sell tickets to B people.
 
 Each seat costs equal to the number of vacant seats in the row it belongs to. The task is to maximize the profit by selling the tickets to B people.
-
-
-
 Problem Constraints
 1 <= |A| <= 100000
-
 1 <= B <= 1000000
-
-
 
 Input Format
 First argument is the array A.
-
 Second argument is integer B.
-
-
-
 Output Format
 Return one integer, the answer to the problem.
-
-
-
 Example Input
 Input 1:
-
 A = [2, 3]
 B = 3
-Input 2:
 
+Input 2:
 A = [1, 4]
 B = 2
 

@@ -18,6 +18,7 @@ Expected Answer:
 
 Output on Console:
 True
+
 int findPeakElement(vector<int> &arr) {
     int n=arr.size();
     // int ans=INT_MIN;
