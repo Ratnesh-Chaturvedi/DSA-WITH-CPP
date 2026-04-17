@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 // By union by rank and size  // we can use anyone of them 
+
+
+
 class DisjointSet{
     vector<int>rank,parent,size;
     public:

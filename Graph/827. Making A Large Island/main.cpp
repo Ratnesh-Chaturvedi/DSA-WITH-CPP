@@ -11,7 +11,7 @@ public:
         if (node == parent[node])
             return node;
         return parent[node] = findUp(parent[node]);
-    }
+    } 
 
     void unionBySize(int u, int v) {
         int ulp_u = findUp(u);

@@ -43,7 +43,7 @@ class Solution {
      }
      
      int scc=0; // to count the number of scc
-     vector<vector<int>>sccComponent; // to store the  of the SCC nodes
+     vector<vector<int>>sccComponent; // to store the path of the SCC nodes
      //Step 3->
      // do DFS one the graph node that are stored in stack
      while(!st.empty()){
